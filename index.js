@@ -14,5 +14,21 @@ import fs from 'fs';
         });
     });
 
-    console.log(titleArray);
+    console.log("Array de títulos:", titleArray);
+
+    const generoCount = {};
+    titleArray.forEach((item) => {
+        generoCount[item.genero] = (generoCount[item.genero] || 0) + 1;
+    });
+
+    let favorito = null;
+    let maxCount = 0;
+    for (const genero in generoCount) {
+        if (generoCount[genero] > maxCount) {
+            maxCount = generoCount[genero];
+            favorito = genero;
+        }
+    }
+
+    console.log("Gênero favorito:", favorito, "→", maxCount, "ocorrências");
 })();
